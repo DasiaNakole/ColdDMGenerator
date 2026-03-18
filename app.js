@@ -8,6 +8,8 @@ const presetButton = document.querySelector("#load-preset");
 const previewMessageRoot = document.querySelector("#preview-message");
 const previewMetaRoot = document.querySelector("#preview-meta");
 const personaButtons = document.querySelectorAll(".persona-chip");
+const hero = document.querySelector(".hero");
+const parallaxLayers = document.querySelectorAll(".parallax-layer");
 
 const personas = {
   videoEditor: {
@@ -193,6 +195,37 @@ function scoreFromText(message) {
   return Math.min(score, 96);
 }
 
+function wireParallax() {
+  if (!hero) return;
+
+  hero.addEventListener("mousemove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    const offsetX = event.clientX - rect.left - rect.width / 2;
+    const offsetY = event.clientY - rect.top - rect.height / 2;
+
+    parallaxLayers.forEach((layer) => {
+      const depth = Number(layer.dataset.depth || 12);
+      const moveX = (offsetX / rect.width) * depth;
+      const moveY = (offsetY / rect.height) * depth;
+
+      if (layer.classList.contains("phone-preview")) {
+        layer.style.transform =
+          `rotateY(${-22 + moveX * 0.35}deg) rotateX(${11 - moveY * 0.25}deg) ` +
+          `rotateZ(${-3 + moveX * 0.05}deg) translate3d(${moveX * 0.7}px, ${moveY * 0.5}px, 0)`;
+        return;
+      }
+
+      layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+  });
+
+  hero.addEventListener("mouseleave", () => {
+    parallaxLayers.forEach((layer) => {
+      layer.style.transform = "";
+    });
+  });
+}
+
 function escapeHtml(value) {
   return value
     .replaceAll("&", "&amp;")
@@ -213,4 +246,5 @@ personaButtons.forEach((button) => {
   });
 });
 
+wireParallax();
 render();
