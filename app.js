@@ -7,6 +7,62 @@ const statusRoot = document.querySelector("#status-pill");
 const presetButton = document.querySelector("#load-preset");
 const previewMessageRoot = document.querySelector("#preview-message");
 const previewMetaRoot = document.querySelector("#preview-meta");
+const personaButtons = document.querySelectorAll(".persona-chip");
+
+const personas = {
+  videoEditor: {
+    freelancerName: "Dasia",
+    service: "short-form video editing and content systems",
+    idealClient: "coaches and service businesses",
+    niche: "personal brands",
+    proof: "I help clients turn scattered content into cleaner offers and more consistent posting",
+    offer: "send over 3 custom content hooks you could test this week",
+    cta: "would you be open to me sending those over?",
+    channel: "dm",
+    platform: "contra",
+    objective: "ideas",
+    energy: "sharp",
+  },
+  designer: {
+    freelancerName: "Dasia",
+    service: "brand design and landing page polish",
+    idealClient: "founders and coaches",
+    niche: "service businesses",
+    proof: "I help clients look more premium so their pages convert with less friction",
+    offer: "mock up 2 quick improvements based on your current branding",
+    cta: "want me to send those over?",
+    channel: "dm",
+    platform: "instagram",
+    objective: "audit",
+    energy: "premium",
+  },
+  copywriter: {
+    freelancerName: "Dasia",
+    service: "sales copy and email funnel strategy",
+    idealClient: "course creators",
+    niche: "digital products",
+    proof: "I help tighten messaging so offers feel clearer and easier to buy",
+    offer: "share 3 message angles you could test in your next campaign",
+    cta: "would that be helpful?",
+    channel: "email",
+    platform: "email",
+    objective: "ideas",
+    energy: "sharp",
+  },
+  developer: {
+    freelancerName: "Dasia",
+    service: "conversion-focused web development",
+    idealClient: "startups and agencies",
+    niche: "B2B SaaS",
+    proof: "I help teams turn messy sites into clearer funnels with stronger user flow",
+    offer: "send a quick teardown of one high-impact page",
+    cta: "open to that?",
+    channel: "dm",
+    platform: "linkedin",
+    objective: "audit",
+    energy: "casual",
+  },
+};
 
 function getFormData() {
   return Object.fromEntries(new FormData(form).entries());
@@ -50,14 +106,22 @@ function render() {
       <div class="tag-row">${item.tags
         .map((tag) => `<span class="mini-chip">${escapeHtml(tag)}</span>`)
         .join("")}</div>
+      <div class="remix-row">
+        <button type="button" class="remix-button" data-mode="shorter">Shorter</button>
+        <button type="button" class="remix-button" data-mode="spicier">Spicier</button>
+        <button type="button" class="remix-button" data-mode="softer">Softer</button>
+      </div>
       <div class="card-footer">
         <span>${item.message.length} characters · ${item.score}/100</span>
         <button type="button" class="copy-button">Copy</button>
       </div>
     `;
 
+    const bodyNode = article.querySelector(".message-body");
+    const scoreNode = article.querySelector(".card-footer span");
+
     article.querySelector(".copy-button").addEventListener("click", async () => {
-      await navigator.clipboard.writeText(item.message);
+      await navigator.clipboard.writeText(bodyNode.textContent);
       const button = article.querySelector(".copy-button");
       button.textContent = "Copied";
       window.setTimeout(() => {
@@ -65,25 +129,24 @@ function render() {
       }, 1200);
     });
 
+    article.querySelectorAll(".remix-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const remixed = remixMessage(bodyNode.textContent, button.dataset.mode);
+        bodyNode.textContent = remixed;
+        scoreNode.textContent = `${remixed.length} characters · ${scoreFromText(remixed)}/100`;
+        previewMessageRoot.textContent = remixed;
+      });
+    });
+
     cardsRoot.appendChild(article);
   });
 }
 
 function loadPreset() {
-  const preset = {
-    freelancerName: "Dasia",
-    service: "short-form video editing and content systems",
-    idealClient: "coaches and service businesses",
-    niche: "personal brands",
-    proof: "I help clients turn scattered content into cleaner offers and more consistent posting",
-    offer: "send over 3 custom content hooks you could test this week",
-    cta: "would you be open to me sending those over?",
-    channel: "dm",
-    platform: "contra",
-    objective: "ideas",
-    energy: "sharp",
-  };
+  applyPersona(personas.videoEditor);
+}
 
+function applyPersona(preset) {
   Object.entries(preset).forEach(([key, value]) => {
     const field = form.elements.namedItem(key);
     if (field) {
@@ -92,6 +155,42 @@ function loadPreset() {
   });
 
   render();
+}
+
+function remixMessage(message, mode) {
+  if (mode === "shorter") {
+    return message
+      .replace("and thought your brand looked like a strong fit. ", "")
+      .replace("If helpful, ", "")
+      .replace("Still ", "")
+      .trim();
+  }
+
+  if (mode === "spicier") {
+    return message
+      .replace("wanted to", "had to")
+      .replace("strong fit", "serious opportunity")
+      .replace("help", "help directly")
+      .trim();
+  }
+
+  if (mode === "softer") {
+    return message
+      .replace("Glad to", "Happy to")
+      .replace("had to", "wanted to")
+      .replace("serious opportunity", "nice fit")
+      .trim();
+  }
+
+  return message;
+}
+
+function scoreFromText(message) {
+  let score = 78;
+  if (message.length < 260) score += 6;
+  if (message.includes("?")) score += 4;
+  if (message.includes("help")) score += 3;
+  return Math.min(score, 96);
 }
 
 function escapeHtml(value) {
@@ -108,5 +207,10 @@ form.addEventListener("submit", (event) => {
 });
 
 presetButton.addEventListener("click", loadPreset);
+personaButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    applyPersona(personas[button.dataset.persona]);
+  });
+});
 
 render();
