@@ -1,15 +1,17 @@
 :root {
-  --bg: #f6efe6;
+  --bg: #0f1220;
   --card: rgba(255, 252, 248, 0.92);
-  --line: #dccdc0;
-  --text: #231b1a;
-  --muted: #6b625e;
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f7f3ed;
+  --muted: #b8b0a8;
   --accent: #de5c35;
   --accent-dark: #9f3113;
   --accent-soft: #ffe0d7;
-  --secondary: #17324d;
-  --secondary-soft: #dce8f4;
-  --shadow: 0 24px 60px rgba(35, 27, 26, 0.12);
+  --secondary: #8cb5ff;
+  --secondary-soft: rgba(140, 181, 255, 0.14);
+  --surface: rgba(20, 24, 39, 0.76);
+  --surface-strong: rgba(16, 19, 31, 0.92);
+  --shadow: 0 24px 60px rgba(2, 6, 23, 0.42);
   --radius: 28px;
 }
 
@@ -23,8 +25,10 @@ body {
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, #fff8ef 0%, transparent 30%),
-    linear-gradient(180deg, #f7f0e7 0%, #efe1d2 100%);
+    radial-gradient(circle at 10% 8%, rgba(222, 92, 53, 0.22), transparent 22%),
+    radial-gradient(circle at 88% 14%, rgba(109, 148, 255, 0.2), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(222, 92, 53, 0.08), transparent 36%),
+    linear-gradient(180deg, #101420 0%, #171b2c 48%, #0d1019 100%);
 }
 
 .page-shell {
@@ -39,12 +43,13 @@ body {
 .panel,
 .message-card,
 .hero-panel {
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.92) 0%, rgba(255, 248, 242, 0.86) 100%);
-  border: 1px solid rgba(220, 205, 192, 0.72);
+  background:
+    linear-gradient(180deg, rgba(24, 28, 44, 0.9) 0%, rgba(15, 18, 31, 0.88) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   box-shadow:
-    0 30px 80px rgba(35, 27, 26, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 34px 90px rgba(2, 6, 23, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
 }
 
@@ -76,7 +81,7 @@ body {
 
 .eyebrow {
   margin: 0 0 10px;
-  color: var(--accent-dark);
+  color: #ff9a77;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.8rem;
@@ -99,13 +104,14 @@ body {
 
 .secondary-button,
 .copy-button {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  background: white;
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   padding: 12px 18px;
   cursor: pointer;
   font: inherit;
+  backdrop-filter: blur(10px);
 }
 
 .status-pill,
@@ -115,8 +121,8 @@ body {
   justify-content: center;
   border-radius: 999px;
   padding: 10px 14px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
+  background: rgba(255, 154, 119, 0.14);
+  color: #ffb297;
   font-weight: 700;
 }
 
@@ -124,8 +130,9 @@ body {
   position: relative;
   padding: 22px;
   background:
-    linear-gradient(180deg, rgba(255, 250, 244, 0.98) 0%, rgba(247, 231, 220, 0.88) 100%),
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.8), transparent 42%);
+    radial-gradient(circle at top right, rgba(140, 181, 255, 0.15), transparent 26%),
+    radial-gradient(circle at 10% 20%, rgba(255, 154, 119, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(15, 18, 31, 0.95) 0%, rgba(20, 24, 39, 0.92) 100%);
   overflow: hidden;
 }
 
@@ -149,7 +156,7 @@ body {
   right: 80px;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle, rgba(222, 92, 53, 0.26), rgba(222, 92, 53, 0));
+  background: radial-gradient(circle, rgba(255, 120, 84, 0.26), rgba(255, 120, 84, 0));
 }
 
 .ambient-two {
@@ -157,7 +164,7 @@ body {
   left: -60px;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(23, 50, 77, 0.12), rgba(23, 50, 77, 0));
+  background: radial-gradient(circle, rgba(140, 181, 255, 0.18), rgba(140, 181, 255, 0));
 }
 
 .ambient-grid {
@@ -165,8 +172,8 @@ body {
   inset: 0;
   z-index: -3;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 85%);
   pointer-events: none;
@@ -175,7 +182,24 @@ body {
 .preview-stage {
   position: relative;
   perspective: 1400px;
-  min-height: 360px;
+  min-height: 420px;
+}
+
+.orbit {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.orbit-one {
+  inset: 20px 12px 36px;
+  transform: rotate(-18deg);
+}
+
+.orbit-two {
+  inset: 52px 30px 66px;
+  transform: rotate(11deg);
 }
 
 .phone-preview {
@@ -186,20 +210,22 @@ body {
   padding: 18px;
   border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 235, 226, 0.94)),
-    radial-gradient(circle at top right, rgba(222, 92, 53, 0.14), transparent 35%);
-  transform: rotateY(-14deg) rotateX(7deg);
+    linear-gradient(180deg, rgba(29, 35, 56, 0.94), rgba(18, 22, 38, 0.94)),
+    radial-gradient(circle at top right, rgba(140, 181, 255, 0.2), transparent 34%);
+  transform: rotateY(-22deg) rotateX(11deg) rotateZ(-3deg);
   transform-style: preserve-3d;
   box-shadow:
-    0 38px 70px rgba(35, 27, 26, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 44px 80px rgba(2, 6, 23, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 58px 34px 34px 90px;
 }
 
 .phone-top {
   width: 88px;
   height: 8px;
   border-radius: 999px;
-  background: rgba(35, 27, 26, 0.16);
+  background: rgba(255, 255, 255, 0.18);
   justify-self: center;
 }
 
@@ -217,18 +243,18 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--secondary);
+  background: linear-gradient(180deg, #8cb5ff 0%, #4f78d0 100%);
   color: white;
   font-weight: 700;
-  box-shadow: 0 14px 22px rgba(23, 50, 77, 0.24);
+  box-shadow: 0 20px 24px rgba(79, 120, 208, 0.25);
 }
 
 .chat-bubble {
   padding: 16px;
   border-radius: 22px 22px 22px 8px;
-  background: white;
-  border: 1px solid #edd6cb;
-  box-shadow: 0 20px 28px rgba(35, 27, 26, 0.1);
+  background: linear-gradient(180deg, rgba(28, 33, 53, 0.98), rgba(18, 22, 38, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 26px 32px rgba(2, 6, 23, 0.32);
 }
 
 .preview-meta {
@@ -244,15 +270,15 @@ body {
   align-items: center;
   padding: 6px 10px;
   border-radius: 999px;
-  background: var(--secondary-soft);
-  color: var(--secondary);
+  background: rgba(140, 181, 255, 0.12);
+  color: #bfd4ff;
   font-size: 0.8rem;
   font-weight: 700;
 }
 
 .chat-bubble p {
   margin: 0;
-  color: var(--muted);
+  color: #e6e0da;
   line-height: 1.7;
 }
 
@@ -262,11 +288,11 @@ body {
   gap: 4px;
   padding: 14px 16px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(220, 205, 192, 0.76);
+  background: rgba(20, 24, 39, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    0 18px 36px rgba(35, 27, 26, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 24px 42px rgba(2, 6, 23, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(12px);
   z-index: 2;
 }
@@ -280,18 +306,58 @@ body {
 
 .floating-stat strong {
   font-size: 1.2rem;
+  color: var(--text);
 }
 
 .stat-one {
-  top: 18px;
-  right: 8px;
-  transform: rotate(6deg);
+  top: 12px;
+  right: 0;
+  transform: rotate(7deg) translateZ(40px);
 }
 
 .stat-two {
-  bottom: 18px;
-  left: 10px;
-  transform: rotate(-7deg);
+  bottom: 6px;
+  left: 12px;
+  transform: rotate(-8deg) translateZ(26px);
+}
+
+.message-slab {
+  position: absolute;
+  width: 200px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(22, 26, 42, 0.88), rgba(14, 17, 29, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 26px 42px rgba(2, 6, 23, 0.32);
+  backdrop-filter: blur(10px);
+}
+
+.message-slab p {
+  margin: 10px 0 0;
+  color: #d6d0ca;
+  line-height: 1.5;
+}
+
+.slab-badge {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 154, 119, 0.14);
+  color: #ffb297;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.slab-back {
+  top: 94px;
+  left: 4px;
+  transform: rotate(-12deg);
+}
+
+.slab-front {
+  right: 18px;
+  bottom: 92px;
+  transform: rotate(10deg);
 }
 
 .app-grid {
@@ -313,17 +379,17 @@ body {
 
 .persona-chip,
 .remix-button {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  background: linear-gradient(180deg, #fffaf6 0%, #ffece2 100%);
-  color: var(--accent-dark);
+  background: linear-gradient(180deg, rgba(255, 154, 119, 0.12) 0%, rgba(255, 154, 119, 0.06) 100%);
+  color: #ffb297;
   padding: 10px 14px;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
   box-shadow:
-    0 10px 18px rgba(222, 92, 53, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    0 16px 24px rgba(2, 6, 23, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
@@ -365,11 +431,17 @@ textarea,
 select {
   width: 100%;
   border-radius: 18px;
-  border: 1px solid var(--line);
-  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
   padding: 14px 16px;
   color: var(--text);
   font: inherit;
+  backdrop-filter: blur(10px);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8b8fa7;
 }
 
 textarea {
@@ -379,8 +451,8 @@ textarea {
 .audit-panel {
   padding: 18px;
   border-radius: 22px;
-  background: linear-gradient(180deg, #f7fbff 0%, #ecf4fb 100%);
-  border: 1px solid #d5e2ef;
+  background: linear-gradient(180deg, rgba(23, 33, 57, 0.9) 0%, rgba(17, 25, 42, 0.9) 100%);
+  border: 1px solid rgba(140, 181, 255, 0.14);
   margin: 18px 0 22px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.86),
@@ -454,7 +526,7 @@ textarea {
 
 .message-why {
   margin: 0 0 14px;
-  color: var(--text);
+  color: #f3ede6;
   font-size: 0.92rem;
 }
 
@@ -473,8 +545,8 @@ textarea {
 }
 
 .remix-button {
-  background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
-  color: var(--secondary);
+  background: linear-gradient(180deg, rgba(140, 181, 255, 0.16) 0%, rgba(140, 181, 255, 0.08) 100%);
+  color: #bfd4ff;
 }
 
 .card-footer {
@@ -498,8 +570,8 @@ textarea {
 .swipe-card {
   padding: 18px;
   border-radius: 22px;
-  background: linear-gradient(180deg, #fff9f4 0%, #fff 100%);
-  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(23, 27, 44, 0.92) 0%, rgba(16, 20, 34, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
     0 16px 28px rgba(35, 27, 26, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.86);
@@ -507,14 +579,14 @@ textarea {
 
 .swipe-card p {
   margin: 10px 0 0;
-  color: var(--muted);
+  color: #d8d0ca;
   line-height: 1.6;
 }
 
 .demo-steps {
   margin: 18px 0 0;
   padding-left: 22px;
-  color: var(--muted);
+  color: #d8d0ca;
   line-height: 1.9;
 }
 
@@ -527,6 +599,15 @@ textarea {
 
   .phone-preview {
     transform: none;
+    margin: 40px 10px 24px;
+  }
+
+  .message-slab,
+  .floating-stat {
+    position: relative;
+    inset: auto;
+    transform: none;
+    margin-bottom: 12px;
   }
 }
 
