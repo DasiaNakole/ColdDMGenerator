@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap");
+
 :root {
   --bg: #f8efe7;
   --card: rgba(255, 252, 248, 0.92);
@@ -22,7 +24,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at 10% 8%, rgba(222, 92, 53, 0.16), transparent 22%),
@@ -75,8 +77,21 @@ body {
 
 .hero-copy h1 {
   margin: 0 0 12px;
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 0.95;
+  font-size: clamp(2.7rem, 6vw, 5.4rem);
+  line-height: 0.9;
+}
+
+.hero-title {
+  display: grid;
+  gap: 4px;
+  letter-spacing: -0.05em;
+  font-family: "Outfit", "Manrope", sans-serif;
+  font-weight: 600;
+}
+
+.hero-title span:last-child {
+  font-weight: 300;
+  opacity: 0.72;
 }
 
 .eyebrow {
@@ -93,6 +108,38 @@ body {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.signal-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.signal-card {
+  padding: 16px 16px 14px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 244, 235, 0.88));
+  border: 1px solid rgba(214, 196, 185, 0.58);
+  box-shadow:
+    0 18px 26px rgba(76, 49, 27, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84);
+}
+
+.signal-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #9d8b7d;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.signal-card strong {
+  font-size: 0.98rem;
+  letter-spacing: -0.03em;
 }
 
 .hero-actions {
@@ -371,6 +418,13 @@ body {
   padding: 24px;
 }
 
+.section-heading h2,
+.message-card h3,
+.swipe-card p,
+.demo-steps {
+  letter-spacing: -0.03em;
+}
+
 .persona-strip {
   display: flex;
   flex-wrap: wrap;
@@ -406,7 +460,9 @@ body {
 
 .section-heading h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-family: "Outfit", "Manrope", sans-serif;
+  font-weight: 500;
 }
 
 .generator-form {
@@ -516,6 +572,8 @@ textarea {
 .card-header h3 {
   margin: 0;
   font-size: 1.2rem;
+  font-family: "Outfit", "Manrope", sans-serif;
+  font-weight: 500;
 }
 
 .message-body {
@@ -614,6 +672,10 @@ textarea {
   .hero,
   .app-grid,
   .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-row {
     grid-template-columns: 1fr;
   }
 
