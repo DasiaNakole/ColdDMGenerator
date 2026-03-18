@@ -10,6 +10,7 @@ const previewMetaRoot = document.querySelector("#preview-meta");
 const personaButtons = document.querySelectorAll(".persona-chip");
 const hero = document.querySelector(".hero");
 const parallaxLayers = document.querySelectorAll(".parallax-layer");
+const tiltPanels = document.querySelectorAll(".panel-3d");
 
 const personas = {
   videoEditor: {
@@ -226,6 +227,23 @@ function wireParallax() {
   });
 }
 
+function wirePanelTilt() {
+  tiltPanels.forEach((panel) => {
+    panel.addEventListener("mousemove", (event) => {
+      const rect = panel.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left - rect.width / 2;
+      const offsetY = event.clientY - rect.top - rect.height / 2;
+      const rotateY = (offsetX / rect.width) * 5;
+      const rotateX = (offsetY / rect.height) * -4;
+      panel.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    panel.addEventListener("mouseleave", () => {
+      panel.style.transform = "";
+    });
+  });
+}
+
 function escapeHtml(value) {
   return value
     .replaceAll("&", "&amp;")
@@ -247,4 +265,5 @@ personaButtons.forEach((button) => {
 });
 
 wireParallax();
+wirePanelTilt();
 render();
