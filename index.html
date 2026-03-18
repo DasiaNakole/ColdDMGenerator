@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cold DM Generator for Freelancers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Freelancer Outreach Tool</p>
+          <h1>Cold DM Generator for Freelancers</h1>
+          <p class="lead">
+            Turn your offer, proof, and target client into sharp outreach
+            messages you can copy, tweak, and send in minutes.
+          </p>
+          <div class="hero-actions">
+            <button id="load-preset" type="button" class="secondary-button">Load Demo Preset</button>
+            <span id="status-pill" class="status-pill">4 outreach variants ready</span>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <p class="eyebrow">What it generates</p>
+          <ul class="feature-list">
+            <li>Value-first opener</li>
+            <li>Warm personalized DM</li>
+            <li>Short direct pitch</li>
+            <li>Follow-up message</li>
+          </ul>
+        </div>
+      </section>
+
+      <main class="app-grid">
+        <section class="panel form-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Inputs</p>
+              <h2>Craft your outreach angle</h2>
+            </div>
+          </div>
+
+          <form id="generator-form" class="generator-form">
+            <label>
+              Your name
+              <input name="freelancerName" placeholder="Dasia" />
+            </label>
+            <label>
+              Service
+              <input name="service" placeholder="email marketing and funnel optimization" />
+            </label>
+            <label>
+              Ideal client
+              <input name="idealClient" placeholder="coaches and consultants" />
+            </label>
+            <label>
+              Niche
+              <input name="niche" placeholder="online education" />
+            </label>
+            <label>
+              Proof / result
+              <textarea
+                name="proof"
+                rows="3"
+                placeholder="I help clients improve reply rates and tighten their offers"
+              ></textarea>
+            </label>
+            <label>
+              Offer
+              <textarea
+                name="offer"
+                rows="3"
+                placeholder="send over a few personalized ideas based on their current content"
+              ></textarea>
+            </label>
+            <label>
+              Call to action
+              <input name="cta" placeholder="would you be open to me sending those over?" />
+            </label>
+            <label>
+              Channel
+              <select name="channel">
+                <option value="dm">DM</option>
+                <option value="email">Email</option>
+              </select>
+            </label>
+          </form>
+        </section>
+
+        <section class="panel output-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Outputs</p>
+              <h2>Copy-ready message variants</h2>
+            </div>
+          </div>
+
+          <div class="audit-panel">
+            <p class="eyebrow">Message Strategy</p>
+            <ul id="audit-list" class="audit-list"></ul>
+          </div>
+
+          <div id="message-cards" class="message-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
