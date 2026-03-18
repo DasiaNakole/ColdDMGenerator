@@ -22,13 +22,17 @@
           </div>
         </div>
         <div class="hero-panel">
-          <p class="eyebrow">What it generates</p>
-          <ul class="feature-list">
-            <li>Value-first opener</li>
-            <li>Warm personalized DM</li>
-            <li>Short direct pitch</li>
-            <li>Follow-up message</li>
-          </ul>
+          <p class="eyebrow">Live Preview</p>
+          <div class="phone-preview">
+            <div class="phone-top"></div>
+            <div class="chat-card">
+              <div class="chat-avatar">DM</div>
+              <div class="chat-bubble">
+                <div id="preview-meta" class="preview-meta"></div>
+                <p id="preview-message"></p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -45,6 +49,15 @@
             <label>
               Your name
               <input name="freelancerName" placeholder="Dasia" />
+            </label>
+            <label>
+              Platform
+              <select name="platform">
+                <option value="contra">Contra</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="instagram">Instagram</option>
+                <option value="email">Email Outreach</option>
+              </select>
             </label>
             <label>
               Service
@@ -78,6 +91,25 @@
               Call to action
               <input name="cta" placeholder="would you be open to me sending those over?" />
             </label>
+            <div class="split-fields">
+              <label>
+                Goal
+                <select name="objective">
+                  <option value="reply">Get a reply</option>
+                  <option value="ideas">Offer ideas</option>
+                  <option value="audit">Offer audit</option>
+                  <option value="call">Book a call</option>
+                </select>
+              </label>
+              <label>
+                Energy
+                <select name="energy">
+                  <option value="sharp">Sharp</option>
+                  <option value="casual">Casual</option>
+                  <option value="premium">Premium</option>
+                </select>
+              </label>
+            </div>
             <label>
               Channel
               <select name="channel">

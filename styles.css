@@ -115,6 +115,75 @@ body {
   color: var(--muted);
 }
 
+.phone-preview {
+  display: grid;
+  gap: 16px;
+  min-height: 280px;
+  padding: 18px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 235, 226, 0.9)),
+    radial-gradient(circle at top right, rgba(222, 92, 53, 0.14), transparent 35%);
+}
+
+.phone-top {
+  width: 88px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(35, 27, 26, 0.16);
+  justify-self: center;
+}
+
+.chat-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.chat-avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: white;
+  font-weight: 700;
+}
+
+.chat-bubble {
+  padding: 16px;
+  border-radius: 22px 22px 22px 8px;
+  background: white;
+  border: 1px solid #edd6cb;
+}
+
+.preview-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.preview-meta span,
+.mini-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--secondary-soft);
+  color: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.chat-bubble p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .app-grid {
   display: grid;
   grid-template-columns: 0.95fr 1.25fr;
@@ -140,6 +209,12 @@ body {
   display: grid;
   gap: 8px;
   font-weight: 600;
+}
+
+.split-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 input,
@@ -218,6 +293,19 @@ textarea {
   color: var(--muted);
 }
 
+.message-why {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
 .card-footer {
   align-items: center;
   color: var(--muted);
@@ -243,8 +331,13 @@ textarea {
 
   .card-header,
   .card-footer,
-  .audit-list li {
+  .audit-list li,
+  .split-fields {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .split-fields {
+    grid-template-columns: 1fr;
   }
 }

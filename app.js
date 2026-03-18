@@ -5,6 +5,8 @@ const cardsRoot = document.querySelector("#message-cards");
 const auditRoot = document.querySelector("#audit-list");
 const statusRoot = document.querySelector("#status-pill");
 const presetButton = document.querySelector("#load-preset");
+const previewMessageRoot = document.querySelector("#preview-message");
+const previewMetaRoot = document.querySelector("#preview-meta");
 
 function getFormData() {
   return Object.fromEntries(new FormData(form).entries());
@@ -14,10 +16,17 @@ function render() {
   const data = getFormData();
   const messages = generateMessages(data);
   const audit = buildAudit(data);
+  const featured = messages[0];
 
   statusRoot.textContent = `${messages.length} outreach variants ready`;
   cardsRoot.innerHTML = "";
   auditRoot.innerHTML = "";
+  previewMessageRoot.textContent = featured.message;
+  previewMetaRoot.innerHTML = `
+    <span>${featured.toneLabel}</span>
+    <span>${featured.score}/100</span>
+    <span>${featured.channelLabel}</span>
+  `;
 
   audit.forEach((item) => {
     const li = document.createElement("li");
@@ -37,8 +46,12 @@ function render() {
         <span class="tone-chip">${item.toneLabel}</span>
       </div>
       <p class="message-body">${escapeHtml(item.message)}</p>
+      <p class="message-why">${escapeHtml(item.why)}</p>
+      <div class="tag-row">${item.tags
+        .map((tag) => `<span class="mini-chip">${escapeHtml(tag)}</span>`)
+        .join("")}</div>
       <div class="card-footer">
-        <span>${item.message.length} characters</span>
+        <span>${item.message.length} characters · ${item.score}/100</span>
         <button type="button" class="copy-button">Copy</button>
       </div>
     `;
@@ -66,6 +79,9 @@ function loadPreset() {
     offer: "send over 3 custom content hooks you could test this week",
     cta: "would you be open to me sending those over?",
     channel: "dm",
+    platform: "contra",
+    objective: "ideas",
+    energy: "sharp",
   };
 
   Object.entries(preset).forEach(([key, value]) => {

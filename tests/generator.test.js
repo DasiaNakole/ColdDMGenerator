@@ -7,6 +7,7 @@ test("buildContext fills defaults and normalizes channel", () => {
   const context = buildContext({ channel: "something-else" });
   assert.equal(context.channel, "dm");
   assert.equal(context.idealClient, "growing businesses");
+  assert.equal(context.platform, "contra");
 });
 
 test("generateMessages returns multiple variants plus follow-up", () => {
@@ -18,11 +19,14 @@ test("generateMessages returns multiple variants plus follow-up", () => {
     offer: "share 2 ideas",
     cta: "would that be useful?",
     channel: "email",
+    platform: "linkedin",
+    energy: "premium",
   });
 
-  assert.equal(messages.length, 4);
+  assert.equal(messages.length, 5);
   assert.match(messages[0].message, /coaches/);
-  assert.match(messages[3].headline, /Follow-Up/);
+  assert.match(messages[4].headline, /Follow-Up/);
+  assert.ok(messages[0].score >= 70);
 });
 
 test("buildAudit exposes the strategy summary", () => {
@@ -34,6 +38,6 @@ test("buildAudit exposes the strategy summary", () => {
     channel: "dm",
   });
 
-  assert.equal(audit.length, 5);
+  assert.equal(audit.length, 7);
   assert.equal(audit[1].value, "email marketing");
 });
